@@ -1,11 +1,11 @@
-import logo from './img/panther.png';
+import logo from './img/logo.png';
 import './app-header.scss';
 
 const AppHeader = () => {
-	return(
+	return (
 		<header className="app-header">
-			<img src={logo} className="App-logo" alt="logo" />
-			<h1>To-Do list</h1>
+			<img src={logo} className="app-logo" alt="logo" />
+			<h1 className="app-header__heading">Todos</h1>
 		</header>
 	);
 }
