@@ -3,10 +3,14 @@ import './main.scss';
 
 // Components
 import AppHeader from './components/app-header/AppHeader';
+import AddToDo from './components/add-to-do/AddToDo';
 
-const App = () => {
+function App() {
   return (
-    <AppHeader />
+    <div className="app-container">
+      <AppHeader />
+      <AddToDo />
+    </div>
   );
 }
 

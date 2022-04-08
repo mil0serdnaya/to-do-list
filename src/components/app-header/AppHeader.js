@@ -1,10 +1,10 @@
 import logo from './img/logo.png';
 import './app-header.scss';
 
-const AppHeader = () => {
+function AppHeader() {
 	return (
 		<header className="app-header">
-			<img src={logo} className="app-logo" alt="logo" />
+			<img src={logo} className="app-header__logo" alt="logo" />
 			<h1 className="app-header__heading">Todos</h1>
 		</header>
 	);
