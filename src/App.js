@@ -10,6 +10,10 @@ import ToDoList from './components/to-do-list/ToDoList';
 function App() {
   let [toDos, onAddToDo] = useState([]);
 
+  let setId = (array) => {
+    array.forEach((item, index) => item.id = index + 1);
+  }
+
   onAddToDo = (event) => {
     let toDo = event.target.value.trim();
     if (event.keyCode === 13 && !!toDo) {
@@ -18,15 +22,15 @@ function App() {
         done: false
       });
       event.target.value = '';
-      console.log(toDos);
     }
+    setId(toDos);
   }
 
   return (
     <div className="app-container">
       <AppHeader />
-      <AddToDo onAddToDo={onAddToDo}/>
-      <ToDoList />
+      <AddToDo toDos={toDos} onAddToDo={onAddToDo}/>
+      <ToDoList toDos={toDos}/>
     </div>
   );
 }
