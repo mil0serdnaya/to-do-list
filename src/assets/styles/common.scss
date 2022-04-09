@@ -1,14 +1,10 @@
 * {
   box-sizing: border-box;
+  outline: none;
 }
 
-body {
+#app {
   background: rgba(pink, 0.1);
-}
-
-ol, ul, p {
-  margin: 0;
-  padding: 0;
 }
 
 .app-container {

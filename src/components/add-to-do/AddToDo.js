@@ -1,22 +1,21 @@
 import './add-to-do.scss';
-import { useState } from 'react';
 
 function AddToDo() {
-  let [input, handleInputChange] = useState('');
+  const toDos = [];
 
-  handleInputChange = (event) => {
-    input = event.target.value;
-  }
-
-  const handleClick = () => {
-    
+  const handleKeyUp = (event) => {
+    let toDo = event.target.value.trim();
+    if (event.keyCode === 13 && !!toDo) {
+      toDos.push({
+        text: toDo
+      });
+      event.target.value = '';
+    }
   }
 
   return (
     <div className="add-to-do">
-      <input type="text" name="add-to-do" className="add-to-do__input" placeholder="What needs to be done?" onChange={handleInputChange}></input>
-      <button className="add-to-do__btn" onClick={handleClick}>Add</button>
-      {input}
+      <input type="text" name="add-to-do" className="add-to-do__input" onKeyUp={handleKeyUp} placeholder="What needs to be done?"></input>
     </div>
   );
 }
