@@ -1,16 +1,22 @@
 import './to-do-list.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function ToDoList({toDos}) {
-  const [toDosArr, setToDos] = useState(toDos);
+  const [internalState, setInternalState] = useState(toDos);
+  const previousValueRef = useRef();
+  const previousValue = previousValueRef.current;
+
+  if (toDos !== previousValue && toDos !== internalState) {
+    setInternalState(toDos);
+  }
   
   useEffect(() => {
-    setToDos(toDos);
-  }, [toDos]);
+    previousValueRef.current = toDos;
+  });
 
   return (
     <ul className="to-do-list">
-      {toDosArr.map((toDo, i) =>
+      {internalState.map((toDo, i) =>
         <span key={i}>{toDo.text}</span>
       )}
     </ul>
