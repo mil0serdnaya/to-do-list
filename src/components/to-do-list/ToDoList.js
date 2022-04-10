@@ -1,13 +1,18 @@
 import './to-do-list.scss';
+import { useState, useEffect } from 'react';
 
-function ToDoList(props) {
-  const toDos = props.toDos;
-  const toDoItems = toDos.map((item) => 
-    <li key={item.id}>{item.text}</li>
-  );
+function ToDoList({toDos}) {
+  const [toDosArr, setToDos] = useState(toDos);
+  
+  useEffect(() => {
+    setToDos(toDos);
+  }, [toDos]);
+
   return (
     <ul className="to-do-list">
-      {toDoItems}
+      {toDosArr.map((toDo, i) =>
+        <span key={i}>{toDo.text}</span>
+      )}
     </ul>
   );
 }

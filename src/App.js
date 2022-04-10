@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="app-container">
       <AppHeader />
-      <AddToDo toDos={toDos} onAddToDo={onAddToDo}/>
+      <AddToDo onAddToDo={onAddToDo}/>
       <ToDoList toDos={toDos}/>
     </div>
   );
