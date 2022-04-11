@@ -1,6 +1,6 @@
 import './add-to-do.scss';
 
-function AddToDo(props) {
+const AddToDo = (props) => {
   const handleKeyUp = (event) => {
     props.onAddToDo(event);
   }

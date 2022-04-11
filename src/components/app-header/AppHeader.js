@@ -1,7 +1,7 @@
 import logo from './img/logo.png';
 import './app-header.scss';
 
-function AppHeader() {
+const AppHeader = () => {
 	return (
 		<header className="app-header">
 			<img src={logo} className="app-header__logo" alt="logo" />

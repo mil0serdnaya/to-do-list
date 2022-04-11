@@ -1,7 +1,7 @@
 import './to-do-list.scss';
 import { useState, useEffect, useRef } from 'react';
 
-function ToDoList({toDos}) {
+const ToDoList = ({toDos}) => {
   const [internalState, setInternalState] = useState(toDos);
   const previousValueRef = useRef();
   const previousValue = previousValueRef.current;

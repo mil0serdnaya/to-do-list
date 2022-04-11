@@ -1,13 +1,11 @@
-// Assets
 import './main.scss';
 import { useState } from 'react';
 
-// Components
 import AppHeader from './components/app-header/AppHeader';
 import AddToDo from './components/add-to-do/AddToDo';
 import ToDoList from './components/to-do-list/ToDoList';
 
-function App() {
+const App = () => {
   let [toDos, onAddToDo] = useState([]);
 
   const setId = (array) => {

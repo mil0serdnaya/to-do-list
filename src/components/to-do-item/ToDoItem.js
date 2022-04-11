@@ -1,6 +1,6 @@
 import './to-do-item.scss';
 
-function ToDoItem(props) {
+const ToDoItem = (props) => {
   return (
     <li>{props.text}</li>
   );
