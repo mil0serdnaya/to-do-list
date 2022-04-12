@@ -5,7 +5,6 @@ import { addToDo } from '../../redux/toDoSlice';
 
 const AddToDo = () => {
   const dispatch = useDispatch();
-
   const onAddToDo = (event) => {
     let toDo = event.target.value.trim();
     if (event.keyCode === 13 && !!toDo) {
