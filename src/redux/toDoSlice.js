@@ -8,7 +8,8 @@ export const toDoSlice = createSlice({
       const toDo = {
         id: new Date(),
         text: action.payload.text,
-        completed: false
+        completed: false,
+        isEditing: false
       }
       state.push(toDo);
     },
@@ -16,11 +17,15 @@ export const toDoSlice = createSlice({
       return state.filter((toDo) => toDo.id !== action.payload.id);
     },
     toggleComplete: (state, action) => {
-      const index = state.findIndex(toDo => toDo.id === action.payload.id);
+      let index = state.findIndex(toDo => toDo.id === action.payload.id);
       state[index].completed = action.payload.completed;
+    },
+    editToDo: (state, action) => {
+      let index = state.findIndex(toDo => toDo.id === action.payload.id);
+      state[index].isEditing = action.payload.isEditing;
     }
   }
 });
 
-export const { addToDo, deleteToDo, toggleComplete } = toDoSlice.actions;
+export const { addToDo, deleteToDo, toggleComplete, editToDo } = toDoSlice.actions;
 export default toDoSlice.reducer;

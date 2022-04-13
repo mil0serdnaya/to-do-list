@@ -1,8 +1,8 @@
 import './to-do-item.scss';
-import { deleteToDo, toggleComplete } from '../../redux/toDoSlice';
+import { deleteToDo, editToDo, toggleComplete } from '../../redux/toDoSlice';
 import { useDispatch } from 'react-redux';
 
-const ToDoItem = ({id, text, completed}) => {
+const ToDoItem = ({id, text, completed, isEditing}) => {
   const dispatch = useDispatch();
 
   const onDeleteToDo = () => {
@@ -11,18 +11,30 @@ const ToDoItem = ({id, text, completed}) => {
     )
   };
 
-  const onToggleToDo = () => {
+  const onToggleComplete = () => {
     dispatch(
       toggleComplete({id, completed: !completed})
     )
   };
 
+  const onEditToDo = () => {
+    dispatch(
+      editToDo({id, isEditing: !isEditing})
+    )
+    console.log({isEditing})
+  };
+
   return (
-    <li className={`to-do-item ${completed && 'to-do-item--completed'}`}>
-      <button onClick={onToggleToDo} className="to-do-item__toggle"></button>
-      <label className="to-do-item__text">
+    <li className={`to-do-item ${completed ? 'to-do-item--completed' :''} ${isEditing ? 'to-do-item--editing' :''}`}>
+      <button onClick={onToggleComplete} className="to-do-item__toggle"></button>
+      <span onDoubleClick={onEditToDo} className="to-do-item__text">
         {text}
-      </label>
+      </span>
+      <input 
+        type="text"
+        className="to-do-item__edit"
+      >
+      </input>
       <button onClick={onDeleteToDo} className="to-do-item__del"></button>
     </li>
   );
