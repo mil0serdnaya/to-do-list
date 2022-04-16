@@ -33,6 +33,7 @@ const ToDoItem = ({id, text, completed, isEditing}) => {
       <input 
         type="text"
         className="to-do-item__edit"
+        value={text}
       >
       </input>
       <button onClick={onDeleteToDo} className="to-do-item__del"></button>

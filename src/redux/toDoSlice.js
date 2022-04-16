@@ -12,7 +12,6 @@ export const toDoSlice = createSlice({
         isEditing: false
       }
       state.push(toDo);
-      window.localStorage.setItem("toDo", JSON.stringify(toDo));
     },
     deleteToDo: (state, action) => {
       return state.filter((toDo) => toDo.id !== action.payload.id);
