@@ -17,11 +17,13 @@ const ToDoItem = ({id, text, completed, isEditing}) => {
     )
   };
 
-  const onEditToDo = () => {
-    dispatch(
-      editToDo({id, isEditing: !isEditing})
-    )
-    console.log({isEditing})
+  const onEditToDo = (event) => {
+    let newText = event.target.value.trim();
+    if (event.keyCode === 13 && !!newText) {
+      dispatch(
+        editToDo({id, newText, isEditing: !isEditing})
+      )
+    }
   };
 
   return (
@@ -34,6 +36,7 @@ const ToDoItem = ({id, text, completed, isEditing}) => {
         type="text"
         className="to-do-item__edit"
         value={text}
+        onChange={onEditToDo}
       >
       </input>
       <button onClick={onDeleteToDo} className="to-do-item__del"></button>
