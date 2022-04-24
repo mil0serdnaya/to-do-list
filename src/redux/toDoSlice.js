@@ -8,8 +8,7 @@ export const toDoSlice = createSlice({
       const toDo = {
         id: new Date(),
         text: action.payload.text,
-        completed: false,
-        isEditing: false
+        completed: false
       }
       state.push(toDo);
     },
@@ -22,8 +21,7 @@ export const toDoSlice = createSlice({
     },
     editToDo: (state, action) => {
       let index = state.findIndex(toDo => toDo.id === action.payload.id);
-      state[index].isEditing = action.payload.isEditing;
-      state[index].text = action.payload.newText;
+      // state[index].text = action.payload.newText;
     }
   }
 });

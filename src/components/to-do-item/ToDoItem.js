@@ -2,7 +2,9 @@ import './to-do-item.scss';
 import { deleteToDo, editToDo, toggleComplete } from '../../redux/toDoSlice';
 import { useDispatch } from 'react-redux';
 
-const ToDoItem = ({id, text, completed, isEditing}) => {
+const isEditing = false;
+
+const ToDoItem = ({id, text, completed}) => {
   const dispatch = useDispatch();
 
   const onDeleteToDo = () => {
@@ -21,7 +23,7 @@ const ToDoItem = ({id, text, completed, isEditing}) => {
     let newText = event.target.value.trim();
     if (event.keyCode === 13 && !!newText) {
       dispatch(
-        editToDo({id, newText, isEditing: !isEditing})
+        editToDo({id, newText})
       )
     }
   };

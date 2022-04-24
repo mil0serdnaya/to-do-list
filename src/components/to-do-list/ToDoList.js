@@ -12,8 +12,7 @@ const ToDoList = () => {
           key={toDo.id} 
           id={toDo.id} 
           text={toDo.text} 
-          completed={toDo.completed}
-          isEditing={toDo.isEditing} />
+          completed={toDo.completed} />
 			))}
     </ul>
   );
