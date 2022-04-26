@@ -28,24 +28,21 @@ const ToDoItem = ({id, text, completed}) => {
     }
   };
 
-  // const toggleEditing = () => {
-  //   console.log(isEditing);
-  // }
-
   return (
-    <li className={`to-do-item ${completed ? 'to-do-item--completed':''} ${isEditing ? 'to-do-item--editing':''}`}
+    <li className={`to-do-item ${completed ? 'to-do-item--completed':''}`}
         onDoubleClick={() => setEditing(!isEditing)}>
       <button onClick={onToggleComplete} className="to-do-item__toggle"></button>
       { !isEditing && 
         <span className="to-do-item__text"> 
-        {text}
-      </span> }
+          {text}
+        </span> 
+      }
       { isEditing &&
       <input
         type="text"
         className="to-do-item__edit"
-        value={text}
-        onChange={onEditToDo}
+        defaultValue={text}
+        onKeyDown={onEditToDo}
       >
       </input> }
       <button onClick={onDeleteToDo} className="to-do-item__del"></button>
