@@ -1,10 +1,11 @@
 import './to-do-item.scss';
+import { useState } from "react";
 import { deleteToDo, editToDo, toggleComplete } from '../../redux/toDoSlice';
 import { useDispatch } from 'react-redux';
 
 const ToDoItem = ({id, text, completed}) => {
   const dispatch = useDispatch();
-  let isEditing = false;
+  const [isEditing, setEditing] = useState(false);
 
   const onDeleteToDo = () => {
     dispatch(
@@ -27,18 +28,20 @@ const ToDoItem = ({id, text, completed}) => {
     }
   };
 
-  const toggleEditing = () => {
-    isEditing = !isEditing;
-  }
+  // const toggleEditing = () => {
+  //   console.log(isEditing);
+  // }
 
   return (
-    <li className={`to-do-item ${completed ? 'to-do-item--completed':''} ${isEditing ? 'to-do-item--editing':''}`}>
+    <li className={`to-do-item ${completed ? 'to-do-item--completed':''} ${isEditing ? 'to-do-item--editing':''}`}
+        onDoubleClick={() => setEditing(!isEditing)}>
       <button onClick={onToggleComplete} className="to-do-item__toggle"></button>
-      { !isEditing && <span onDoubleClick={toggleEditing} className="to-do-item__text"> 
+      { !isEditing && 
+        <span className="to-do-item__text"> 
         {text}
       </span> }
       { isEditing &&
-      <input 
+      <input
         type="text"
         className="to-do-item__edit"
         value={text}
