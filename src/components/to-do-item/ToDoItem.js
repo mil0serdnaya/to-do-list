@@ -25,6 +25,7 @@ const ToDoItem = ({id, text, completed}) => {
       dispatch(
         editToDo({id, newText})
       )
+      setEditing(!isEditing);
     }
   };
 
