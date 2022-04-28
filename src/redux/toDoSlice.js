@@ -22,6 +22,13 @@ export const toDoSlice = createSlice({
     editToDo: (state, action) => {
       let index = state.findIndex(toDo => toDo.id === action.payload.id);
       state[index].text = action.payload.newText;
+    },
+    setLocalStorage: (state) => {
+      localStorage.setItem('todos', state);
+    },
+    getLocalStorage: (state) => {
+      let storage = localStorage.getItem('todos');
+      if (storage) state = JSON.parse(storage);
     }
   }
 });
