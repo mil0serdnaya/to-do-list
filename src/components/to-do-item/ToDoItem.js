@@ -14,9 +14,11 @@ const ToDoItem = ({id, text, completed}) => {
   };
 
   const onToggleComplete = () => {
-    dispatch(
-      toggleComplete({id, completed: !completed})
-    )
+    if (!isEditing) {
+      dispatch(
+        toggleComplete({id, completed: !completed})
+      )
+    }
   };
 
   const onEditToDo = (event) => {
