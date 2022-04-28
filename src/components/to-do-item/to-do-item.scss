@@ -53,7 +53,7 @@
       height: 15px;
       border: solid #000;
       border-width: 0 1.5px 1.5px 0;
-      border-color: #3CB371;
+      border-color: #5AC69F;
       transform: rotate(45deg);
       margin-bottom: 4px;
       display: none;
@@ -70,12 +70,12 @@
     color: #4d4d4d;
     word-break: break-all;
     line-height: 1.2;
-    border: none;
+    border: 1px solid rgba(175, 47, 47, 0.15);
   }
 
   &--completed {
     .to-do-item__toggle {
-      border-color: #3CB371;
+      border-color: #5AC69F;
 
       &::after {
         display: block;
