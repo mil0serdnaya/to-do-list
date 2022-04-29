@@ -2,7 +2,7 @@ import './to-do-list.scss';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getLocalStorage } from '../../redux/toDoSlice';
+import { setLocalStorage } from '../../redux/toDoSlice';
 
 import ToDoItem from '../to-do-item/ToDoItem'
 
@@ -12,7 +12,7 @@ const ToDoList = () => {
 
   useEffect(() => {
     dispatch(
-      getLocalStorage()
+      setLocalStorage()
     )
   }, [toDos]);
 

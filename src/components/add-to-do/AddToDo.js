@@ -14,9 +14,6 @@ const AddToDo = () => {
           text: toDo,
         })
       )
-      dispatch(
-        setLocalStorage()
-      )
       event.target.value = '';
     }
   }

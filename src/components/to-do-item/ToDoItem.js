@@ -11,18 +11,12 @@ const ToDoItem = ({id, text, completed}) => {
     dispatch(
       deleteToDo({id})
     )
-    dispatch(
-      setLocalStorage()
-    )
   };
 
   const onToggleComplete = () => {
     if (!isEditing) {
       dispatch(
         toggleComplete({id, completed: !completed})
-      )
-      dispatch(
-        setLocalStorage()
       )
     }
   };
@@ -34,9 +28,6 @@ const ToDoItem = ({id, text, completed}) => {
         editToDo({id, newText})
       )
       setEditing(!isEditing);
-      dispatch(
-        setLocalStorage()
-      )
     }
   };
 
