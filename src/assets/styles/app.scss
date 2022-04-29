@@ -1,0 +1,30 @@
+.app {
+  &__header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3em 0;
+    position: relative;
+  }
+  
+  &__logo {
+    margin-bottom: 2em;
+  }
+
+  &__heading {
+    margin: 0;
+    font-size: 6em;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: rgba(175, 47, 47, 0.15);
+    position: relative;
+  }
+
+  &__container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 100px;
+  }
+}

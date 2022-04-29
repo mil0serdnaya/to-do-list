@@ -26,15 +26,17 @@ const ToDoList = () => {
   }, [toDoItems]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <ul className="to-do-list">
-			{toDoItems.map((toDo) => (
-				<ToDoItem 
-          key={toDo.id}
-          id={toDo.id}
-          text={toDo.text}
-          completed={toDo.completed} />
-			))}
-    </ul>
+    <section>
+      <ul className="to-do-list">
+        {toDoItems.map((toDo) => (
+          <ToDoItem 
+            key={toDo.id}
+            id={toDo.id}
+            text={toDo.text}
+            completed={toDo.completed} />
+        ))}
+      </ul>
+    </section>
   );
 }
 

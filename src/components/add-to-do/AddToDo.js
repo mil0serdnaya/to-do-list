@@ -19,14 +19,14 @@ const AddToDo = () => {
   }
 
   return (
-    <div className="add-to-do">
+    <header className="add-to-do">
       <input 
         type="text" 
         className="add-to-do__input" 
         onKeyUp={onAddToDo} 
         placeholder="What needs to be done?">
       </input>
-    </div>
+    </header>
   );
 }
 
