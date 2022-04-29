@@ -3,7 +3,7 @@ import toDoReducer from './toDoSlice';
 
 export default configureStore({
   reducer: {
-    toDos: toDoReducer,
+    toDoList: toDoReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

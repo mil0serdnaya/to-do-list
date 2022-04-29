@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const toDoSlice = createSlice({
-  name: 'toDos',
-  initialState: [],
+  name: 'toDoList',
+  initialState: {
+    toDoItems: []
+  },
   reducers: {
     addToDo: (state, action) => {
       const toDo = {
@@ -10,26 +12,26 @@ export const toDoSlice = createSlice({
         text: action.payload.text,
         completed: false
       }
-      state.push(toDo);
+      state.toDoItems.push(toDo);
     },
     deleteToDo: (state, action) => {
-      return state.filter((toDo) => toDo.id !== action.payload.id);
+      return state.toDoItems.filter((toDo) => toDo.id !== action.payload.id);
     },
     toggleComplete: (state, action) => {
-      let index = state.findIndex(toDo => toDo.id === action.payload.id);
-      state[index].completed = action.payload.completed;
+      let index = state.toDoItems.findIndex(toDo => toDo.id === action.payload.id);
+      state.toDoItems[index].completed = action.payload.completed;
     },
     editToDo: (state, action) => {
-      let index = state.findIndex(toDo => toDo.id === action.payload.id);
-      state[index].text = action.payload.newText;
+      let index = state.toDoItems.findIndex(toDo => toDo.id === action.payload.id);
+      state.toDoItems[index].text = action.payload.newText;
     },
     setLocalStorage: (state, action) => {
-      localStorage.setItem('todos', JSON.stringify(state));
+      localStorage.setItem('toDoItems', JSON.stringify(state));
     },
     getLocalStorage: (state, action) => {
-      let storage = localStorage.getItem('todos');
+      let storage = localStorage.getItem('toDoItems');
       if (storage) {
-        state = JSON.parse(storage);
+        state.toDoItems = JSON.parse(storage);
       }
     }
   }

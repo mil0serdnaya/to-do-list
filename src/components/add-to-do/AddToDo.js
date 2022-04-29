@@ -1,7 +1,7 @@
 import './add-to-do.scss';
 
 import { useDispatch } from 'react-redux';
-import { addToDo, setLocalStorage } from '../../redux/toDoSlice';
+import { addToDo } from '../../redux/toDoSlice';
 
 const AddToDo = () => {
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import './to-do-item.scss';
 import { useState } from "react";
-import { deleteToDo, editToDo, toggleComplete, setLocalStorage } from '../../redux/toDoSlice';
+import { deleteToDo, editToDo, toggleComplete } from '../../redux/toDoSlice';
 import { useDispatch } from 'react-redux';
 
 const ToDoItem = ({id, text, completed}) => {
