@@ -1,9 +1,20 @@
 import './to-do-list.scss';
-import ToDoItem from '../to-do-item/ToDoItem'
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getLocalStorage } from '../../redux/toDoSlice';
+
+import ToDoItem from '../to-do-item/ToDoItem'
 
 const ToDoList = () => {
   const toDos = useSelector((state) => state.toDos);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(
+      getLocalStorage()
+    )
+  }, [toDos]);
 
   return (
     <ul className="to-do-list">

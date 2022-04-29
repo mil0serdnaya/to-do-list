@@ -1,10 +1,11 @@
 import './add-to-do.scss';
 
 import { useDispatch } from 'react-redux';
-import { addToDo } from '../../redux/toDoSlice';
+import { addToDo, setLocalStorage } from '../../redux/toDoSlice';
 
 const AddToDo = () => {
   const dispatch = useDispatch();
+  
   const onAddToDo = (event) => {
     let toDo = event.target.value.trim();
     if (event.keyCode === 13 && !!toDo) {
@@ -12,7 +13,10 @@ const AddToDo = () => {
         addToDo({
           text: toDo,
         })
-      );
+      )
+      dispatch(
+        setLocalStorage()
+      )
       event.target.value = '';
     }
   }

@@ -1,6 +1,6 @@
 import './to-do-item.scss';
 import { useState } from "react";
-import { deleteToDo, editToDo, toggleComplete } from '../../redux/toDoSlice';
+import { deleteToDo, editToDo, toggleComplete, setLocalStorage } from '../../redux/toDoSlice';
 import { useDispatch } from 'react-redux';
 
 const ToDoItem = ({id, text, completed}) => {
@@ -11,12 +11,18 @@ const ToDoItem = ({id, text, completed}) => {
     dispatch(
       deleteToDo({id})
     )
+    dispatch(
+      setLocalStorage()
+    )
   };
 
   const onToggleComplete = () => {
     if (!isEditing) {
       dispatch(
         toggleComplete({id, completed: !completed})
+      )
+      dispatch(
+        setLocalStorage()
       )
     }
   };
@@ -28,6 +34,9 @@ const ToDoItem = ({id, text, completed}) => {
         editToDo({id, newText})
       )
       setEditing(!isEditing);
+      dispatch(
+        setLocalStorage()
+      )
     }
   };
 

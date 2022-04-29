@@ -23,15 +23,17 @@ export const toDoSlice = createSlice({
       let index = state.findIndex(toDo => toDo.id === action.payload.id);
       state[index].text = action.payload.newText;
     },
-    setLocalStorage: (state) => {
-      localStorage.setItem('todos', state);
+    setLocalStorage: (state, action) => {
+      localStorage.setItem('todos', JSON.stringify(state));
     },
-    getLocalStorage: (state) => {
+    getLocalStorage: (state, action) => {
       let storage = localStorage.getItem('todos');
-      if (storage) state = JSON.parse(storage);
+      if (storage) {
+        state = JSON.parse(storage);
+      }
     }
   }
 });
 
-export const { addToDo, deleteToDo, toggleComplete, editToDo } = toDoSlice.actions;
+export const { addToDo, deleteToDo, toggleComplete, editToDo, getLocalStorage, setLocalStorage } = toDoSlice.actions;
 export default toDoSlice.reducer;
