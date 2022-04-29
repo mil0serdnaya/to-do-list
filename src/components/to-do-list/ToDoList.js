@@ -1,5 +1,3 @@
-import './to-do-list.scss';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { setLocalStorage, setInitialState } from '../../redux/toDoSlice';
@@ -26,8 +24,8 @@ const ToDoList = () => {
   }, [toDoItems]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <section>
-      <ul className="to-do-list">
+    <section className="to-do-list">
+      <ul>
         {toDoItems.map((toDo) => (
           <ToDoItem 
             key={toDo.id}
