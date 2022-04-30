@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 export const toDoSlice = createSlice({
   name: 'toDoList',
@@ -15,6 +15,7 @@ export const toDoSlice = createSlice({
       state.toDoItems.push(toDo);
     },
     deleteToDo: (state, action) => {
+      console.log(current(state.toDoItems));
       return state.toDoItems.filter((toDo) => toDo.id !== action.payload.id);
     },
     toggleComplete: (state, action) => {
