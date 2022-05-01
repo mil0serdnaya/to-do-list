@@ -2,11 +2,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { setLocalStorage, setInitialState } from '../../redux/toDoSlice';
 
-import ToDoItem from '../to-do-item/ToDoItem'
+import ToDoItem from '../to-do-item/ToDoItem';
+import ListFilter from '../list-filter/ListFilter';
+
 
 const ToDoList = () => {
-  const toDoItems = useSelector((state) => state.toDoList.toDoItems);
   const dispatch = useDispatch();
+  const allToDoItems = useSelector((state) => state.toDoList.toDoItems);
+  const completedToDos = useSelector((state) => state.toDoList.toDoItems.filter((toDo) => toDo.completed));
 
   useEffect(() => {
     let storage = JSON.parse(localStorage.getItem('toDoItems'));
@@ -21,12 +24,12 @@ const ToDoList = () => {
     dispatch(
       setLocalStorage()
     )
-  }, [toDoItems]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [allToDoItems]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section className="to-do-list">
       <ul>
-        {toDoItems.map((toDo) => (
+        {allToDoItems.map((toDo) => (
           <ToDoItem 
             key={toDo.id}
             id={toDo.id}
@@ -34,6 +37,7 @@ const ToDoList = () => {
             completed={toDo.completed} />
         ))}
       </ul>
+      <ListFilter />
     </section>
   );
 }
