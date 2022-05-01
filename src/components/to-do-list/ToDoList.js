@@ -5,15 +5,14 @@ import { setLocalStorage, setInitialState } from '../../redux/toDoSlice';
 import ToDoItem from '../to-do-item/ToDoItem';
 import ListFilter from '../list-filter/ListFilter';
 
-
 const ToDoList = () => {
   const dispatch = useDispatch();
   const allToDoItems = useSelector((state) => state.toDoList.toDoItems);
-  const completedToDos = useSelector((state) => state.toDoList.toDoItems.filter((toDo) => toDo.completed));
+  // const completedToDos = useSelector((state) => state.toDoList.toDoItems.filter((toDo) => toDo.completed));
 
   useEffect(() => {
     let storage = JSON.parse(localStorage.getItem('toDoItems'));
-    if (storage.toDoItems.length) {
+    if (storage) {
       dispatch(
         setInitialState(storage)
       )

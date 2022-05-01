@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 export const toDoSlice = createSlice({
   name: 'toDoList',
   initialState: {
-    toDoItems: []
+    toDoItems: [],
+    activeList: 'all'
   },
   reducers: {
     addToDo: (state, action) => {
@@ -30,9 +31,12 @@ export const toDoSlice = createSlice({
     },
     setInitialState: (state, action) => {
       state.toDoItems = action.payload.toDoItems;
+    },
+    setActiveList: (state, action) => {
+      state.activeList = action.payload;
     }
   }
 });
 
-export const { addToDo, deleteToDo, toggleComplete, editToDo, getLocalStorage, setLocalStorage, setInitialState } = toDoSlice.actions;
+export const { addToDo, deleteToDo, toggleComplete, editToDo, getLocalStorage, setLocalStorage, setInitialState, setActiveList } = toDoSlice.actions;
 export default toDoSlice.reducer;

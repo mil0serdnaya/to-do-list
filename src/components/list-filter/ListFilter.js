@@ -1,12 +1,22 @@
 import './list-filter.scss';
 
+import { useDispatch } from 'react-redux';
+import { setActiveList } from '../../redux/toDoSlice';
+
 const ListFilter = () => {
+  const dispatch = useDispatch();
+
+  const handleClick = (event) => {
+    dispatch(
+      setActiveList(event.target.value)
+    )
+  }
 
   return(
     <footer className="list-filter">
-      <button className="list-filter__btn list-filter__btn--active">All</button>
-      <button className="list-filter__btn">Active</button>
-      <button className="list-filter__btn">Completed</button>
+      <button onClick={handleClick} value="all" className="list-filter__btn list-filter__btn--active">All</button>
+      <button onClick={handleClick} value="active" className="list-filter__btn">Active</button>
+      <button onClick={handleClick} value="completed" className="list-filter__btn">Completed</button>
     </footer>
   )
 }
