@@ -5,8 +5,13 @@ import { setActiveList } from '../../redux/toDoSlice';
 
 const ListFilter = () => {
   const dispatch = useDispatch();
+  const buttons = document.querySelectorAll('.list-filter__btn');
 
   const handleClick = (event) => {
+    buttons.forEach(button => {
+      button.classList.remove('list-filter__btn--active');
+    })
+    event.target.classList.add('list-filter__btn--active');
     dispatch(
       setActiveList(event.target.value)
     )
