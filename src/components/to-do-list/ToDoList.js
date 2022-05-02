@@ -7,8 +7,10 @@ import ListFilter from '../list-filter/ListFilter';
 
 const ToDoList = () => {
   const dispatch = useDispatch();
-  const allToDoItems = useSelector((state) => state.toDoList.toDoItems);
-  // const completedToDos = useSelector((state) => state.toDoList.toDoItems.filter((toDo) => toDo.completed));
+  const activeList = useSelector(state => state.toDoList.activeList);
+  const allToDoItems = useSelector(state => state.toDoList.toDoItems);
+  const completedToDos = useSelector(state => state.toDoList.toDoItems.filter((toDo) => toDo.completed));
+  const activeToDos = useSelector(state => state.toDoList.toDoItems.filter((toDo) => !toDo.completed));
 
   useEffect(() => {
     let storage = JSON.parse(localStorage.getItem('toDoItems'));
@@ -23,18 +25,39 @@ const ToDoList = () => {
     dispatch(
       setLocalStorage()
     )
+    console.log(activeList)
   }, [allToDoItems]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section className="to-do-list">
       <ul>
-        {allToDoItems.map((toDo) => (
-          <ToDoItem 
-            key={toDo.id}
-            id={toDo.id}
-            text={toDo.text}
-            completed={toDo.completed} />
-        ))}
+        { activeList === 'all' &&
+          allToDoItems.map((toDo) => (
+            <ToDoItem 
+              key={toDo.id}
+              id={toDo.id}
+              text={toDo.text}
+              completed={toDo.completed} />
+          ))
+        }
+        { activeList === 'completed' &&
+          completedToDos.map((toDo) => (
+            <ToDoItem 
+              key={toDo.id}
+              id={toDo.id}
+              text={toDo.text}
+              completed={toDo.completed} />
+          ))
+        }
+        { activeList === 'active' &&
+          activeToDos.map((toDo) => (
+            <ToDoItem 
+              key={toDo.id}
+              id={toDo.id}
+              text={toDo.text}
+              completed={toDo.completed} />
+          ))
+        }
       </ul>
       <ListFilter />
     </section>
