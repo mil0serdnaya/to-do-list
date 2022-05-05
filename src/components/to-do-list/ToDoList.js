@@ -7,6 +7,7 @@ import ListFilter from '../list-filter/ListFilter';
 
 const ToDoList = () => {
   const dispatch = useDispatch();
+  
   const activeList = useSelector(state => state.toDoList.activeList);
   const allToDoItems = useSelector(state => state.toDoList.toDoItems);
   const completedToDos = useSelector(state => state.toDoList.toDoItems.filter((toDo) => toDo.completed));
