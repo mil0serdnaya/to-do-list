@@ -1,9 +1,9 @@
 ## React To-Do list
 
-[https://milos3rdnaya.github.io/to-do-list](Go try!)
+[Go try!](https://milos3rdnaya.github.io/to-do-list)
 
 ![TODO](http://i0.kym-cdn.com/photos/images/newsfeed/001/332/344/784.jpg)
-## Available scripts
+## Available Scripts
 
 ### `npm start`
 
