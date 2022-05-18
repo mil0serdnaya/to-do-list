@@ -26,7 +26,6 @@ const ToDoList = () => {
     dispatch(
       setLocalStorage()
     )
-    console.log(activeList)
   }, [allToDoItems]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
