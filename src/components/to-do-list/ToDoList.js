@@ -2,10 +2,10 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { setLocalStorage, setInitialState } from '../../redux/toDoSlice';
 
-import ToDoItem from '../to-do-item/ToDoItem';
-import ListFilter from '../list-filter/ListFilter';
+import { ToDoItem } from '../to-do-item/ToDoItem';
+import { ListFilter } from '../list-filter/ListFilter';
 
-const ToDoList = () => {
+export const ToDoList = () => {
   const dispatch = useDispatch();
   
   const activeList = useSelector(state => state.toDoList.activeList);
@@ -63,5 +63,3 @@ const ToDoList = () => {
     </section>
   );
 }
-
-export default ToDoList;

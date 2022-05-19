@@ -1,10 +1,10 @@
 import './main.scss';
 
-import AppHeader from './components/app-header/AppHeader';
-import AddToDo from './components/add-to-do/AddToDo';
-import ToDoList from './components/to-do-list/ToDoList';
+import { AppHeader } from './components/app-header/AppHeader';
+import { AddToDo } from './components/add-to-do/AddToDo';
+import { ToDoList } from './components/to-do-list/ToDoList';
 
-const App = () => {
+export const App = () => {
   return (
     <div className="app__container">
       <AppHeader />
@@ -15,5 +15,3 @@ const App = () => {
     </div>
   );
 }
-
-export default App;

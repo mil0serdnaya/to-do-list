@@ -3,7 +3,7 @@ import './list-filter.scss';
 import { useDispatch } from 'react-redux';
 import { setActiveList } from '../../redux/toDoSlice';
 
-const ListFilter = () => {
+export const ListFilter = () => {
   const dispatch = useDispatch();
   const buttons = document.querySelectorAll('.list-filter__btn');
 
@@ -25,5 +25,3 @@ const ListFilter = () => {
     </footer>
   )
 }
-
-export default ListFilter;

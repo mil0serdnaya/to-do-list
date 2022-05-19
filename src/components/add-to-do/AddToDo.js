@@ -3,7 +3,7 @@ import './add-to-do.scss';
 import { useDispatch } from 'react-redux';
 import { addToDo } from '../../redux/toDoSlice';
 
-const AddToDo = () => {
+export const AddToDo = () => {
   const dispatch = useDispatch();
   
   const onAddToDo = (event) => {
@@ -29,5 +29,3 @@ const AddToDo = () => {
     </header>
   );
 }
-
-export default AddToDo;

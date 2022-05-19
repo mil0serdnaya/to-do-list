@@ -3,7 +3,7 @@ import { useState } from "react";
 import { deleteToDo, editToDo, toggleComplete } from '../../redux/toDoSlice';
 import { useDispatch } from 'react-redux';
 
-const ToDoItem = ({id, text, completed}) => {
+export const ToDoItem = ({id, text, completed}) => {
   const dispatch = useDispatch();
   const [isEditing, setEditing] = useState(false);
 
@@ -51,5 +51,3 @@ const ToDoItem = ({id, text, completed}) => {
     </li>
   );
 }
-
-export default ToDoItem;

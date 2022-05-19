@@ -1,7 +1,7 @@
 import logo from './img/logo.png';
 import './app-header.scss';
 
-const AppHeader = () => {
+export const AppHeader = () => {
 	return (
 		<header className="app__header">
 			<p className="hint hint--left">You can add/delete/complete your awesome todos!</p>
@@ -11,5 +11,3 @@ const AppHeader = () => {
 		</header>
 	);
 }
-
-export default AppHeader;
