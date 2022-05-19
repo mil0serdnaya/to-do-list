@@ -1,5 +1,5 @@
 import logo from './img/logo.png';
-import './app-header.scss';
+import './AppHeader.scss';
 
 export const AppHeader = () => {
 	return (

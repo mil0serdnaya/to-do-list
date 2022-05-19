@@ -1,4 +1,4 @@
-import './add-to-do.scss';
+import './AddToDo.scss';
 
 import { useDispatch } from 'react-redux';
 import { addToDo } from '../../redux/toDoSlice';

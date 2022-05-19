@@ -2,8 +2,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { setLocalStorage, setInitialState } from '../../redux/toDoSlice';
 
-import { ToDoItem } from '../to-do-item/ToDoItem';
-import { ListFilter } from '../list-filter/ListFilter';
+import { ToDoItem } from '../ToDoItem/ToDoItem';
+import { ListFilter } from '../ListFilter/ListFilter';
 
 export const ToDoList = () => {
   const dispatch = useDispatch();

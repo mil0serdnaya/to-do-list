@@ -1,4 +1,5 @@
-import './to-do-item.scss';
+import './ToDoItem.scss';
+
 import { useState } from "react";
 import { deleteToDo, editToDo, toggleComplete } from '../../redux/toDoSlice';
 import { useDispatch } from 'react-redux';

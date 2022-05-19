@@ -1,8 +1,8 @@
-import './main.scss';
+import '../assets/styles/main.scss';
 
-import { AppHeader } from './components/app-header/AppHeader';
-import { AddToDo } from './components/add-to-do/AddToDo';
-import { ToDoList } from './components/to-do-list/ToDoList';
+import { AppHeader } from './AppHeader/AppHeader';
+import { AddToDo } from './AddToDo/AddToDo';
+import { ToDoList } from './ToDoList/ToDoList';
 
 export const App = () => {
   return (

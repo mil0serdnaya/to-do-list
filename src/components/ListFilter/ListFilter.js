@@ -1,4 +1,4 @@
-import './list-filter.scss';
+import './ListFilter.scss';
 
 import { useDispatch } from 'react-redux';
 import { setActiveList } from '../../redux/toDoSlice';
