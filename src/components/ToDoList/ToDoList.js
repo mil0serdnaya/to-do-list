@@ -8,7 +8,7 @@ import { ListFilter } from '../ListFilter/ListFilter';
 export const ToDoList = () => {
   const dispatch = useDispatch();
   
-  const activeList = useSelector(state => state.toDoList.activeList);
+  const VISIBILITY_FILTER = useSelector(state => state.toDoList.VISIBILITY_FILTER);
   const allToDoItems = useSelector(state => state.toDoList.toDoItems);
   const completedToDos = useSelector(state => state.toDoList.toDoItems.filter((toDo) => toDo.completed));
   const activeToDos = useSelector(state => state.toDoList.toDoItems.filter((toDo) => !toDo.completed));
@@ -31,7 +31,7 @@ export const ToDoList = () => {
   return (
     <section className="to-do-list">
       <ul>
-        { activeList === 'all' &&
+        { VISIBILITY_FILTER === 'ALL' &&
           allToDoItems.map((toDo) => (
             <ToDoItem 
               key={toDo.id}
@@ -40,7 +40,7 @@ export const ToDoList = () => {
               completed={toDo.completed} />
           ))
         }
-        { activeList === 'completed' &&
+        { VISIBILITY_FILTER === 'COMPLETED' &&
           completedToDos.map((toDo) => (
             <ToDoItem 
               key={toDo.id}
@@ -49,7 +49,7 @@ export const ToDoList = () => {
               completed={toDo.completed} />
           ))
         }
-        { activeList === 'active' &&
+        { VISIBILITY_FILTER === 'ACTIVE' &&
           activeToDos.map((toDo) => (
             <ToDoItem 
               key={toDo.id}

@@ -1,7 +1,7 @@
 import './ListFilter.scss';
 
 import { useDispatch } from 'react-redux';
-import { setActiveList } from '../../redux/toDoSlice';
+import { setVisibilityFilter } from '../../redux/toDoSlice';
 
 export const ListFilter = () => {
   const dispatch = useDispatch();
@@ -13,15 +13,15 @@ export const ListFilter = () => {
     })
     event.target.classList.add('list-filter__btn--active');
     dispatch(
-      setActiveList(event.target.value)
+      setVisibilityFilter(event.target.value)
     )
   }
 
   return(
     <footer className="list-filter">
-      <button onClick={handleClick} value="all" className="list-filter__btn list-filter__btn--active">All</button>
-      <button onClick={handleClick} value="active" className="list-filter__btn">Active</button>
-      <button onClick={handleClick} value="completed" className="list-filter__btn">Completed</button>
+      <button onClick={handleClick} value="ALL" className="list-filter__btn list-filter__btn--active">All</button>
+      <button onClick={handleClick} value="ACTIVE" className="list-filter__btn">Active</button>
+      <button onClick={handleClick} value="COMPLETED" className="list-filter__btn">Completed</button>
     </footer>
   )
 }

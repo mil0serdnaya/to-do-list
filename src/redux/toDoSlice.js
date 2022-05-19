@@ -4,7 +4,7 @@ export const toDoSlice = createSlice({
   name: 'toDoList',
   initialState: {
     toDoItems: [],
-    activeList: 'all'
+    VISIBILITY_FILTER: 'ALL'
   },
   reducers: {
     addToDo: (state, action) => {
@@ -32,11 +32,11 @@ export const toDoSlice = createSlice({
     setInitialState: (state, action) => {
       state.toDoItems = action.payload.toDoItems;
     },
-    setActiveList: (state, action) => {
-      state.activeList = action.payload;
+    setVisibilityFilter: (state, action) => {
+      state.VISIBILITY_FILTER = action.payload;
     }
   }
 });
 
-export const { addToDo, deleteToDo, toggleComplete, editToDo, getLocalStorage, setLocalStorage, setInitialState, setActiveList } = toDoSlice.actions;
+export const { addToDo, deleteToDo, toggleComplete, editToDo, getLocalStorage, setLocalStorage, setInitialState, setVisibilityFilter } = toDoSlice.actions;
 export default toDoSlice.reducer;
