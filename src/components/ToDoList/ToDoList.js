@@ -14,7 +14,7 @@ export const ToDoList = () => {
   const activeToDos = useSelector(state => state.toDoList.toDoItems.filter((toDo) => !toDo.completed));
 
   useEffect(() => {
-    let storage = JSON.parse(localStorage.getItem('toDoItems'));
+    let storage = JSON.parse(localStorage.getItem('toDoList'));
     if (storage) {
       dispatch(
         setInitialState(storage)
@@ -26,7 +26,7 @@ export const ToDoList = () => {
     dispatch(
       setLocalStorage()
     )
-  }, [allToDoItems]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [allToDoItems, VISIBILITY_FILTER]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section className="to-do-list">
