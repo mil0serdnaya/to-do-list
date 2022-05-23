@@ -33,7 +33,8 @@ export const ToDoItem = ({id, text, completed}) => {
   };
 
   return (
-    <li className={`to-do-item ${completed ? 'to-do-item--completed':''}`} onDoubleClick={() => {if (!completed) setEditing(!isEditing)}}>
+    <li className={`to-do-item ${completed ? 'to-do-item--completed':''}`} 
+        onDoubleClick={() => {if (!completed) setEditing(!isEditing)}}>
       <button onClick={onToggleComplete} className="to-do-item__toggle"></button>
       { !isEditing && 
         <span className="to-do-item__text"> 

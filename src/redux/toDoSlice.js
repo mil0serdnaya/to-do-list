@@ -27,7 +27,7 @@ export const toDoSlice = createSlice({
       state.toDoItems[index].text = action.payload.newText;
     },
     setLocalStorage: (state, action) => {
-      localStorage.setItem('toDoItems', JSON.stringify(state));
+      localStorage.setItem('toDoList', JSON.stringify(state));
     },
     setInitialState: (state, action) => {
       state.toDoItems = action.payload.toDoItems;
