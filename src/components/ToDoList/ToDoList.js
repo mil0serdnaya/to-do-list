@@ -8,7 +8,7 @@ import { ListFilter } from '../ListFilter/ListFilter';
 export const ToDoList = () => {
   const dispatch = useDispatch();
   
-  const VISIBILITY_FILTER = useSelector(state => state.toDoList.VISIBILITY_FILTER);
+  const visibilityFilter = useSelector(state => state.toDoList.visibilityFilter);
   const allToDoItems = useSelector(state => state.toDoList.toDoItems);
   const completedToDos = useSelector(state => state.toDoList.toDoItems.filter((toDo) => toDo.completed));
   const activeToDos = useSelector(state => state.toDoList.toDoItems.filter((toDo) => !toDo.completed));
@@ -26,12 +26,12 @@ export const ToDoList = () => {
     dispatch(
       setLocalStorage()
     )
-  }, [allToDoItems, VISIBILITY_FILTER]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [allToDoItems, visibilityFilter]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section className="to-do-list">
       <ul>
-        { VISIBILITY_FILTER === 'ALL' &&
+        { visibilityFilter === 'ALL' &&
           allToDoItems.map((toDo) => (
             <ToDoItem 
               key={toDo.id}
@@ -40,7 +40,7 @@ export const ToDoList = () => {
               completed={toDo.completed} />
           ))
         }
-        { VISIBILITY_FILTER === 'COMPLETED' &&
+        { visibilityFilter === 'COMPLETED' &&
           completedToDos.map((toDo) => (
             <ToDoItem 
               key={toDo.id}
@@ -49,7 +49,7 @@ export const ToDoList = () => {
               completed={toDo.completed} />
           ))
         }
-        { VISIBILITY_FILTER === 'ACTIVE' &&
+        { visibilityFilter === 'ACTIVE' &&
           activeToDos.map((toDo) => (
             <ToDoItem 
               key={toDo.id}
