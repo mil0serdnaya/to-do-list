@@ -17,15 +17,15 @@ export const ListFilter = () => {
     <footer className="list-filter">
       <button onClick={handleClick} 
               value="ALL" 
-              className={`list-filter__btn ${ visibilityFilter === 'ALL' ? 'list-filter__btn--active':''}`}>
+              className={`list-filter__btn ${ visibilityFilter === 'all' ? 'list-filter__btn--active':''}`}>
               All</button>
       <button onClick={handleClick} 
               value="ACTIVE" 
-              className={`list-filter__btn ${ visibilityFilter === 'ACTIVE' ? 'list-filter__btn--active':''}`}>
+              className={`list-filter__btn ${ visibilityFilter === 'active' ? 'list-filter__btn--active':''}`}>
               Active</button>
       <button onClick={handleClick} 
               value="COMPLETED" 
-              className={`list-filter__btn ${ visibilityFilter === 'COMPLETED' ? 'list-filter__btn--active':''}`}>
+              className={`list-filter__btn ${ visibilityFilter === 'completed' ? 'list-filter__btn--active':''}`}>
               Completed</button>
     </footer>
   )

@@ -4,7 +4,7 @@ export const toDoSlice = createSlice({
   name: 'toDoList',
   initialState: {
     toDoItems: [],
-    visibilityFilter: 'ALL'
+    visibilityFilter: 'all'
   },
   reducers: {
     addToDo: (state, action) => {
