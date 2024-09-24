@@ -1,55 +1,41 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { deleteToDo, editToDo, toggleComplete } from '../../redux/toDoSlice';
 import './ToDoItem.scss';
 
-import { useState } from "react";
-import { deleteToDo, editToDo, toggleComplete } from '../../redux/toDoSlice';
-import { useDispatch } from 'react-redux';
-
-export const ToDoItem = ({id, text, completed}) => {
+export const ToDoItem = ({ id, text, completed }) => {
   const dispatch = useDispatch();
   const [isEditing, setEditing] = useState(false);
 
-  const onDeleteToDo = () => {
-    dispatch(
-      deleteToDo({id})
-    )
-  };
-
-  const onToggleComplete = () => {
-    if (!isEditing) {
-      dispatch(
-        toggleComplete({id, completed: !completed})
-      )
-    }
-  };
-
-  const onEditToDo = (event) => {
-    let newText = event.target.value.trim();
-    if (event.keyCode === 13 && !!newText) {
-      dispatch(
-        editToDo({id, newText})
-      )
-      setEditing(!isEditing);
+  const handleDelete = () => dispatch(deleteToDo({ id }));
+  const handleToggleComplete = () => !isEditing && dispatch(toggleComplete({ id, completed: !completed }));
+  
+  const handleEdit = (event) => {
+    const newText = event.target.value.trim();
+    if (event.key === 'Enter' && newText) {
+      dispatch(editToDo({ id, newText }));
+      setEditing(false);
     }
   };
 
   return (
-    <li className={`to-do-item ${completed ? 'to-do-item--completed':''}`} 
-        onDoubleClick={() => {if (!completed) setEditing(!isEditing)}}>
-      <button onClick={onToggleComplete} className="to-do-item__toggle"></button>
-      { !isEditing && 
-        <span className="to-do-item__text"> 
-          {text}
-        </span> 
-      }
-      { isEditing &&
-      <input
-        type="text"
-        className="to-do-item__edit"
-        defaultValue={text}
-        onKeyDown={onEditToDo}
-      >
-      </input> }
-      <button onClick={onDeleteToDo} className="to-do-item__del"></button>
+    <li 
+      className={`to-do-item ${completed ? 'to-do-item--completed' : ''}`} 
+      onDoubleClick={() => !completed && setEditing(true)}
+    >
+      <button onClick={handleToggleComplete} className="to-do-item__toggle"></button>
+      {isEditing ? (
+        <input
+          type="text"
+          className="to-do-item__edit"
+          defaultValue={text}
+          onKeyDown={handleEdit}
+          autoFocus
+        />
+      ) : (
+        <span className="to-do-item__text">{text}</span>
+      )}
+      <button onClick={handleDelete} className="to-do-item__del"></button>
     </li>
   );
-}
+};

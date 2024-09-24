@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { setLocalStorage, setInitialState } from '../../redux/toDoSlice';
 
 import { ToDoItem } from '../ToDoItem/ToDoItem';
@@ -7,32 +7,27 @@ import { ListFilter } from '../ListFilter/ListFilter';
 
 export const ToDoList = () => {
   const dispatch = useDispatch();
-  
-  const visibilityFilter = useSelector(state => state.toDoList.visibilityFilter);
-  const allToDoItems = useSelector(state => state.toDoList.toDoItems);
-  const completedToDos = useSelector(state => state.toDoList.toDoItems.filter((toDo) => toDo.completed));
-  const activeToDos = useSelector(state => state.toDoList.toDoItems.filter((toDo) => !toDo.completed));
+  const { visibilityFilter, toDoItems } = useSelector(state => state.toDoList);
+
+  const completedToDos = useMemo(() => toDoItems.filter(toDo => toDo.completed), [toDoItems]);
+  const activeToDos = useMemo(() => toDoItems.filter(toDo => !toDo.completed), [toDoItems]);
 
   useEffect(() => {
-    let storage = JSON.parse(localStorage.getItem('toDoList'));
-    if (storage) {
-      dispatch(
-        setInitialState(storage)
-      )
+    const storedList = localStorage.getItem('toDoList');
+    if (storedList) {
+      dispatch(setInitialState(JSON.parse(storedList)));
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   useEffect(() => {
-    dispatch(
-      setLocalStorage()
-    )
-  }, [allToDoItems, visibilityFilter]); // eslint-disable-line react-hooks/exhaustive-deps
+    dispatch(setLocalStorage());
+  }, [dispatch, toDoItems, visibilityFilter]);
 
   return (
     <section className="to-do-list">
       <ul>
         { visibilityFilter === 'ALL' &&
-          allToDoItems.map((toDo) => (
+          toDoItems.map((toDo) => (
             <ToDoItem 
               key={toDo.id}
               id={toDo.id}
