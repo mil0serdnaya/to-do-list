@@ -1,32 +1,38 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  toDoItems: [],
+  visibilityFilter: 'ALL',
+};
+
 export const toDoSlice = createSlice({
   name: 'toDoList',
-  initialState: {
-    toDoItems: [],
-    visibilityFilter: 'all'
-  },
+  initialState,
   reducers: {
     addToDo: (state, action) => {
-      const toDo = {
-        id: new Date(),
+      const newToDo = {
+        id: Date.now(),
         text: action.payload.text,
-        completed: false
-      }
-      state.toDoItems.push(toDo);
+        completed: false,
+      };
+      state.toDoItems.push(newToDo);
     },
     deleteToDo: (state, action) => {
-      state.toDoItems = state.toDoItems.filter((toDo) => toDo.id !== action.payload.id);
+      state.toDoItems = state.toDoItems.filter(toDo => toDo.id !== action.payload.id);
     },
     toggleComplete: (state, action) => {
-      let index = state.toDoItems.findIndex(toDo => toDo.id === action.payload.id);
-      state.toDoItems[index].completed = action.payload.completed;
+      const toDo = state.toDoItems.find(toDo => toDo.id === action.payload.id);
+      if (toDo) {
+        toDo.completed = !toDo.completed;
+      }
     },
     editToDo: (state, action) => {
-      let index = state.toDoItems.findIndex(toDo => toDo.id === action.payload.id);
-      state.toDoItems[index].text = action.payload.newText;
+      const toDo = state.toDoItems.find(toDo => toDo.id === action.payload.id);
+      if (toDo) {
+        toDo.text = action.payload.newText;
+      }
     },
-    setLocalStorage: (state, action) => {
+    setLocalStorage: (state) => {
       localStorage.setItem('toDoList', JSON.stringify(state));
     },
     setInitialState: (state, action) => {
@@ -35,9 +41,18 @@ export const toDoSlice = createSlice({
     },
     setVisibilityFilter: (state, action) => {
       state.visibilityFilter = action.payload;
-    }
-  }
+    },
+  },
 });
 
-export const { addToDo, deleteToDo, toggleComplete, editToDo, getLocalStorage, setLocalStorage, setInitialState, setVisibilityFilter } = toDoSlice.actions;
+export const { 
+  addToDo, 
+  deleteToDo, 
+  toggleComplete, 
+  editToDo, 
+  setLocalStorage, 
+  setInitialState, 
+  setVisibilityFilter 
+} = toDoSlice.actions;
+
 export default toDoSlice.reducer;

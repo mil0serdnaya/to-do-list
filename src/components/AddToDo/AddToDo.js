@@ -8,7 +8,7 @@ export const AddToDo = () => {
   
   const onAddToDo = (event) => {
     let toDo = event.target.value.trim();
-    if (event.keyCode === 13 && !!toDo) {
+    if (event.keyCode === 13 && toDo) {
       dispatch(
         addToDo({
           text: toDo,
